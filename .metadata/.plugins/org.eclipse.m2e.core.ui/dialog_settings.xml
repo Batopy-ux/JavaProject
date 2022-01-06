@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\hemantb\Documents\javaclasses\Javaproject\JavaProject"/>
+			<item value="C:\Users\hemantb\Documents\javaclasses\Javaproject\JavaProject\Profile"/>
 			<item value="D:\Project\BankingApp-main\CustomerService"/>
 			<item value="D:\Project\Profile"/>
 			<item value="D:\Project\Transaction"/>
