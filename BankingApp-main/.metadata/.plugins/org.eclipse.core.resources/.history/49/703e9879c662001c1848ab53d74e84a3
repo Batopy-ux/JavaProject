@@ -1,0 +1,39 @@
+package com.ba.customerservice.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Table
+@Entity
+public class City {
+	@Id
+	@GeneratedValue
+	private int cityId;
+	private String cityName;
+	private Integer cPincode;
+	
+	
+	public int getcId() {
+		return cityId;
+	}
+	public void setcId(int cId) {
+		this.cityId = cId;
+	}
+	public String getCityName() {
+		return cityName;
+	}
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	public Integer getcPincode() {
+		return cPincode;
+	}
+	public void setcPincode(Integer cPincode) {
+		this.cPincode = cPincode;
+	}
+	
+	
+
+}

@@ -1,0 +1,39 @@
+package com.ba.customerservice.model;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Table(name="addresses")
+@Entity
+public class Address {
+	@Id
+	@GeneratedValue
+	@Column(name="aId")
+	private int aId;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="countryId",referencedColumnName = "aId")
+	private Country aCountry;
+	
+	
+	public int getaId() {
+		return aId;
+	}
+	public void setaId(int aId) {
+		this.aId = aId;
+	}
+	public Country getaCountry() {
+		return aCountry;
+	}
+	public void setaCountry(Country aCountry) {
+		this.aCountry = aCountry;
+	} 
+	
+	
+}

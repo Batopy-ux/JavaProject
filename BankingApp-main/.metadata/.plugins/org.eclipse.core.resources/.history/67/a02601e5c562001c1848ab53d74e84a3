@@ -1,0 +1,58 @@
+package com.ba.customerservice.model;
+
+import java.util.Date;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Table
+@Entity
+public class Customer {
+	@Id
+	@GeneratedValue
+	private int cId;
+	private String cName;
+	private Date cDateOfBirth;
+	private String cGender;
+	@OneToOne(cascade=CascadeType.ALL)
+	private Address cAddress;
+	
+	
+	public int getcId() {
+		return cId;
+	}
+	public void setcId(int cId) {
+		this.cId = cId;
+	}
+	public String getcName() {
+		return cName;
+	}
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+	public Date getcDateOfBirth() {
+		return cDateOfBirth;
+	}
+	public void setcDateOfBirth(Date cDateOfBirth) {
+		this.cDateOfBirth = cDateOfBirth;
+	}
+	public String getcGender() {
+		return cGender;
+	}
+	public void setcGender(String cGender) {
+		this.cGender = cGender;
+	}
+//	public Address getcAddress() {
+//		return cAddress;
+//	}
+//	public void setcAddress(Address cAddress) {
+//		this.cAddress = cAddress;
+//	}
+	
+	
+
+}

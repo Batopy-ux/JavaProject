@@ -1,0 +1,60 @@
+package com.example.ts.profile.service;
+
+import java.util.Optional;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.ts.profile.model.Profile;
+import com.example.ts.profile.repository.ProfileRepository;
+
+@Service
+public class ProfileService {
+	
+	Logger log = LoggerFactory.getLogger(ProfileService.class);
+
+	@Autowired
+	ProfileRepository profileRepository;
+	
+	public Profile addProfile(Profile profile) {
+		log.info("Adding new Profile");
+		return profileRepository.save(profile);
+	}
+	
+	public void deleteProfile(Integer profileId) {
+		profileRepository.deleteById(profileId);
+	}
+	
+	public Profile getProfile(String email, String password){
+		return profileRepository.findProfileByEmailAndPassword(email, password);
+	}
+	
+	public Optional<Profile> findProfileById(Integer i){
+		return profileRepository.findById(i);
+	}
+	
+	
+	public Profile updateProfileEmailAndPassword(Profile profile) {
+		Profile prof= new Profile();
+	
+		if(profileRepository.existsById(profile.getProfileId())) {
+			prof.setAccountBal(profile.getAccountBal());
+			prof.setCreditScore(profile.getCreditScore());
+			prof.setNoOfTransaction(profile.getNoOfTransaction());
+			prof.setEmail(profile.getEmail());
+			prof.setPassword(profile.getPassword());
+		}
+		return prof;
+	}
+	
+		
+	public void updateAccountBal(Profile profile, Double newBal) {
+		profile.setAccountBal(newBal);		
+	}
+		
+		
+	}
+	
+

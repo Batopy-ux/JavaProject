@@ -1,0 +1,42 @@
+package com.example.ts.profile.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import com.example.ts.profile.password.ValidPassword;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table
+public class Profile {
+	
+	@Id
+	private int profileId;
+	
+	@NotEmpty(message = "Email cannot be empty")
+	@NotNull
+	@Email
+	private String email;
+	
+	@ValidPassword
+	private String password;
+	private double accountBal;
+	
+	@NotNull
+	@NotEmpty(message = "CreditScore cannot be empty")
+	@Max(800)
+	private double creditScore;
+	private int noOfTransaction;
+	
+}

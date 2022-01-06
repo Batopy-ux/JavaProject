@@ -1,0 +1,16 @@
+package com.example.ts.profile.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Table
+public class AccountBal {
+	private double AccountBal;
+}
