@@ -40,6 +40,7 @@ public class Profile {
 	
 	@ValidPassword
 	private String password;
+//	private Collection<Role> roles;
 	
 	private int noOfTransaction;
 

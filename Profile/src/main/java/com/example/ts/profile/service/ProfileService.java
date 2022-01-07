@@ -20,9 +20,21 @@ public class ProfileService {
 	ProfileRepository profileRepository;
 	
 	public Profile addProfile(Profile profile) {
+//		if(profileRepository.existsByEmail(profile.getEmail())) {
+//			log.info("Email: "+profile.getEmail()+" already exists!");
+//			return null;
+//		}else {
 		log.info("Adding new Profile");
 		return profileRepository.save(profile);
+//	}
 	}
+	
+//	public Profile registerProfile(ProfileRegistrationDto dto) {
+//		Profile profile=new Profile(0,dto.getEmail(),dto.getPassword(),0,null);
+//		log.info("Adding new Profile");
+//		return profileRepository.save(profile);
+//		
+//	}
 	
 	public void deleteProfile(Integer profileId) {
 		if(profileRepository.existsById(profileId))
