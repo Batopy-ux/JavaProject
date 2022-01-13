@@ -10,13 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-//import javax.validation.constraints.Email;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 //import javax.validation.constraints.NotBlank;
 //import javax.validation.constraints.NotEmpty;
 //import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.ba.customerservice.password.ValidPassword;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
@@ -41,15 +45,15 @@ public class PersonalDetails {
 	private String customerGender;
 	private String customerReligion;
 	
-//	@NotEmpty(message = "Email cannot be empty")
-//	@NotNull
-//	@Email
-//	@NotBlank
+	@NotEmpty(message = "Email cannot be empty")
+	@NotNull
+	@Email
+	@NotBlank
 	@Column(unique=true)
 	private String customerEmail;
 	
 	//if needed for online login
-//	@ValidPassword
+	@ValidPassword
 	private String customerPassword;
 	
 	private String customerOccupation;
