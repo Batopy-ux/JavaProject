@@ -1,5 +1,6 @@
 package com.transaction.transaction.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,9 +32,15 @@ public class TransactionController {
 		return transactionService.addTransaction(tran);
 	}
 	
+//	@GetMapping
+//	public List<Transaction> getAllTransactions() {
+//		return transactionService.getTransactions();
+//	}
+	
 	@GetMapping
-	public List<Transaction> getAllTransactions() {
-		return transactionService.getTransactions();
+	public List<String> getAllTransactions() {
+		String response="From Transactions";
+		return Arrays.asList(response);
 	}
 	
 	@DeleteMapping

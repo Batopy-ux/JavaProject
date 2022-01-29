@@ -10,10 +10,12 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
 import com.ba.customerservice.model.Customer;
 import com.ba.customerservice.repository.CustomerRepository;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Service
 public class CustomerServiceImpl {
@@ -36,7 +38,9 @@ public class CustomerServiceImpl {
 			now.setTimeInMillis(currentTime);
 
 			customer.getPersonalDetails().setCustomerAge(now.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR));
-
+			customer.getPersonalDetails().setCustomerPassword("_@AYpU9fAd4,");
+			customer.getPersonalDetails().setCustomerGender(customer.getPersonalDetails().getCustomerGender().toLowerCase());
+			
 			customerRepository.save(customer);
 			log.info("Customer " + customer.getCustomerName() + " added successfully!");
 			return customer;
@@ -58,10 +62,25 @@ public class CustomerServiceImpl {
 	}
 
 	
-//	public List<Customer> getCustomersByGender(String customerGender) {
-//		return customerRepository.findBycustomerGenderIgnoreCase(customerGender);
-//	}
+	public List<Customer> getCustomersByGender(String customerGender) {
+		
+		return customerRepository.findByCustomersGenderIgnoreCase(customerGender);
+	}
 
+	public Object getCustomersByDateOfBirth(String customerDateOfBirth) {
+		
+		
+		Date customerDOB = null;
+		
+		try {
+			customerDOB = new SimpleDateFormat("dd-MM-yyyy").parse(customerDateOfBirth);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}  
+		System.out.println(customerDOB);
+		return customerRepository.findByCustomersDateOfBirth(customerDOB);
+	}
 	
 	public Customer getCustomersByName(String customerName) {
 		log.info("Finding customer with name: "+customerName);
@@ -127,6 +146,9 @@ public class CustomerServiceImpl {
 		}
 		
 	}
+
+
+	
 	
 	
 //	public Profile updateProfileDetails(Profile profile) {

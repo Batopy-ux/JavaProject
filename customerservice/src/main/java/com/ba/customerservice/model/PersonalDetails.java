@@ -46,7 +46,7 @@ public class PersonalDetails {
 	private String customerReligion;
 	
 	@NotEmpty(message = "Email cannot be empty")
-	@NotNull
+//	@NotNull
 	@Email
 	@NotBlank
 	@Column(unique=true)
